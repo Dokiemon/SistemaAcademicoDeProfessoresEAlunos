@@ -1,3 +1,14 @@
 .login {
-    background-color: aquamarine; 
+    display:grid;
+}
+
+.title {
+
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
 }
