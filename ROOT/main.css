@@ -4,18 +4,71 @@ body {
 
 .login {
     display:grid;
-    box-shadow: 10px 10px gray;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@keyframes ugabuga {
+    from{box-shadow: 0px 0px 55px 10px rgba(0,0,0,0)}
+    to{box-shadow: 0px 0px 55px 10px rgba(0,0,0,1)}
+}
+
+.login:hover {
+    animation-name: ugabuga;
+    animation-duration: 0.5s;
+    box-shadow: 0px 0px 55px 10px rgba(0,0,0,1);
 }
 
 .cont {
+
     display: flex;
     justify-content: center;
     align-items:center;
-    min-height: 100vh;
+    min-height: 120vh;
 }
 
 .cont p {
-    font-size: 40px;
+    font-size: 80px;
     text-align: center;
     font-weight: bold;
+    padding: 0;
+    margin: 10px;
+}
+
+.cont input {
+    font-size:20px;
+    border: none;
+    border-radius: 5px;
+    outline: 0px;
+}
+
+.cont button {
+    font-size:20px;
+    margin: 2px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+@keyframes button_transition {
+    from{background-color: white}
+    from{color: black}
+    to{background-color: Black}
+    to{color:white}
+}
+
+.cont button:hover {
+    animation-name: button_transition;
+    animation-duration: 0.5s;
+    background-color: black;
+    color: white;
+}
+
+@keyframes input_transition {
+    0%{} /*TERMINAR AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+}
+
+.cont input:hover {
+    animation-name: input_transition;
+    animation-duration: 0.5s;
 }
