@@ -110,3 +110,11 @@ ul:hover {
     display: flex;
     justify-content: center;
 }
+
+.userimgcontent{
+    position: absolute;
+    padding-top: 10rem;
+    padding-right: 5rem;
+    top: 0px;
+    right: 0px;
+}

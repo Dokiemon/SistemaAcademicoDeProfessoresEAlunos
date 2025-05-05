@@ -6,5 +6,6 @@ function openMenu() {
 }
 
 function exibirPerfil() {
-    document.querySelector(".usernamecamp").innerHTML = username;
+    document.querySelector(".usernamecamp").innerHTML = "Usuário";
+    document.querySelector(".userimgcamp").src="simlucas.jpg";
 }
