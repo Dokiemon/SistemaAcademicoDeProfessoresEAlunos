@@ -115,6 +115,7 @@ ul:hover {
     align-items: center;
 }
 
-.material-symbols-outlined button {
+#menu {
     position: fixed;
+    margin-top: 0vh;
 }

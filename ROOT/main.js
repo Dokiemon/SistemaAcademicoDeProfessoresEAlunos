@@ -1,4 +1,5 @@
 let username = "";
+let ismenuopen = false;
 
 function openLogin() {
     username = document.querySelector(".username").value
@@ -6,10 +7,20 @@ function openLogin() {
 }
 
 function openMenu(){
-    let menu = document.querySelector('ul');
-    menu.style.display = 'block';
-    let button = document.querySelector('.material-symbols-outlined');
-    button.style.margin = '20vh';
+    if (ismenuopen == false) {
+        ismenuopen = true;
+        let menu = document.querySelector('ul');
+        menu.style.display = 'block';
+        let button = document.querySelector('.material-symbols-outlined');
+        button.style.marginLeft = '20vh';
+    }
+    else if (ismenuopen == true) {
+        ismenuopen = false;
+        let menu = document.querySelector('ul');
+        menu.style.display = 'none';
+        let button = document.querySelector('.material-symbols-outlined');
+        button.style.marginLeft = '0vh';
+    }
 
 }
 
