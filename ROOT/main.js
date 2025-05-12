@@ -1,8 +1,16 @@
 let username = "";
 
-function openMenu() {
+function openLogin() {
     username = document.querySelector(".username").value
     window.location.href="mainscreen.html"
+}
+
+function openMenu(){
+    let menu = document.querySelector('ul');
+    menu.style.display = 'block';
+    let button = document.querySelector('.material-symbols-outlined');
+    button.style.margin = '20vh';
+
 }
 
 function exibirPerfil() {

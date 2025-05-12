@@ -75,6 +75,7 @@ button:hover {
 }*/
 
 ul {
+    display: none;
     position: fixed;
     list-style-type: none;
     top: 0;
@@ -112,4 +113,9 @@ ul:hover {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.material-symbols-outlined button {
+    position: fixed;
+    margin-top = 0vh;
 }
