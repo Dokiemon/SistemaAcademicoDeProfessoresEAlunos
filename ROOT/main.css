@@ -9,17 +9,6 @@ body {
     border-radius: 10px;
 }
 
-@keyframes ugabuga {
-    from{box-shadow: 0px 0px 55px 10px rgba(0,0,0,0)}
-    to{box-shadow: 0px 0px 45px 5px rgba(30,30,30,1)}
-}
-
-.login:hover {
-    animation-name: ugabuga;
-    animation-duration: 0.5s;
-    box-shadow: 0px 0px 45px 5px rgba(30,30,30,1);
-}
-
 .cont {
     display: flex;
     justify-content: center;
@@ -27,7 +16,7 @@ body {
     min-height: 120vh;
 }
 
-.cont p {
+.ovo {
     font-size: 80px;
     text-align: center;
     font-weight: bold;
@@ -49,6 +38,28 @@ button {
     border: none;
     background-color: white;
     border-radius: 5px;
+}
+
+.ronaldo {
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: none;
+    color: black;
+}
+
+.ronaldo:hover {
+    color: rgb(12, 159, 179)
+}
+
+@keyframes ugabuga {
+    from{box-shadow: 0px 0px 55px 10px rgba(0,0,0,0)}
+    to{box-shadow: 0px 0px 45px 5px rgba(30,30,30,1)}
+}
+
+.login:hover {
+    animation-name: ugabuga;
+    animation-duration: 0.5s;
+    box-shadow: 0px 0px 45px 5px rgba(30,30,30,1);
 }
 
 @keyframes button_transition {

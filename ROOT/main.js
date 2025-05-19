@@ -2,8 +2,12 @@ let username = "";
 let ismenuopen = false;
 
 function openLogin() {
-    username = document.querySelector(".username").value
-    window.location.href="mainscreen.html"
+    username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona
+    window.location.href="mainscreen.html";
+}
+
+function returnLogin() {
+    window.location.href="index.html";
 }
 
 function openMenu(){
