@@ -1,5 +1,6 @@
 let username = "";
 let ismenuopen = false;
+let isuseropen = false;
 
 function openLogin() {
     username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona
@@ -29,6 +30,20 @@ function openMenu(){
 }
 
 function exibirPerfil() {
-    document.querySelector(".usernamecamp").innerHTML = "Usuário";
+    console.log('ta funcionando');
+    document.querySelector(".modal").style.display = 'block';
     document.querySelector(".userimgcamp").src="simlucas.jpg";
+    isuseropen = true;
 }
+
+window.onclick = (event) => {
+  if (event.target === document.querySelector('.modal')) {
+    document.querySelector('.modal').style.display = 'none';
+  }
+};
+
+/*window.onclick = (event) => {
+    if (isuseropen) {
+        document.querySelector(".modal").style.display = 'none';
+    }
+}*/

@@ -130,3 +130,12 @@ ul:hover {
     position: fixed;
     margin-top: 0vh;
 }
+
+.modal {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: bisque;
+    padding: 5rem;
+}
