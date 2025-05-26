@@ -139,3 +139,11 @@ ul:hover {
     background-color: bisque;
     padding: 5rem;
 }
+
+.username {
+    font-size: 4em;
+    position: relative;
+    margin-top: -6vh;
+    top: 0px;
+    align-items: center;
+}

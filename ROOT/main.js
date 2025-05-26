@@ -29,18 +29,25 @@ function openMenu(){
 
 }
 
+document.querySelector(".openuser").addEventListener("click", function(event) {
+    event.stopPropagation();
+    exibirPerfil();
+});
+
 function exibirPerfil() {
-    console.log('ta funcionando');
+    console.log('abriu');
     document.querySelector(".modal").style.display = 'block';
     document.querySelector(".userimgcamp").src="simlucas.jpg";
     isuseropen = true;
 }
 
-window.onclick = (event) => {
-  if (event.target === document.querySelector('.modal')) {
-    document.querySelector('.modal').style.display = 'none';
-  }
-};
+    window.onclick = function () {
+        if (isuseropen) {
+            document.querySelector(".modal").style.display = "none";
+            isuseropen = false;
+            console.log("fechou")
+        }
+    }
 
 /*window.onclick = (event) => {
     if (isuseropen) {
