@@ -6,7 +6,11 @@
 
 generator client {
   provider = "prisma-client-js"
+<<<<<<< HEAD
   output   = "../generated/prisma"
+=======
+  //output   = "../generated/prisma"
+>>>>>>> refs/remotes/origin/main
 }
 
 datasource db {
@@ -15,7 +19,15 @@ datasource db {
 }
 
 model Usuario {
+<<<<<<< HEAD
   id    Int    @id @default(autoincrement())
   nome  String
   senha String @unique
 }
+=======
+  id Int @id @default(autoincrement())
+  nome String 
+  senha String
+  tipo String
+}
+>>>>>>> refs/remotes/origin/main

@@ -1,12 +1,26 @@
 {
+<<<<<<< HEAD
+=======
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "node": "^20.19.2"
+  },
+>>>>>>> refs/remotes/origin/main
   "name": "natanimpotentedabizonisciente",
   "version": "1.0.0",
   "description": "PPO 02",
   "main": "index.js",
+<<<<<<< HEAD
+=======
+  "devDependencies": {
+    "prisma": "^6.8.2"
+  },
+>>>>>>> refs/remotes/origin/main
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+<<<<<<< HEAD
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^6.8.2",
@@ -15,4 +29,7 @@
   "devDependencies": {
     "prisma": "^6.8.2"
   }
+=======
+  "license": "ISC"
+>>>>>>> refs/remotes/origin/main
 }
