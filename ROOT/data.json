@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1",
+        "nome": "Diabeto Chocolatto",
+        "classe": "aluno",
+        "turmas": ["Panificação-2025-02", "Gastronomia-Molecular-2025-02"]
+    }
+]
