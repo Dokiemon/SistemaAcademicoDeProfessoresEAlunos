@@ -3,6 +3,8 @@ let ismenuopen = false;
 let isuseropen = false;
 
 function openLogin() {
+    fetch("data.json")
+        .then(res => res.json)
     username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona
     window.location.href="mainscreen.html";
 }
@@ -35,6 +37,13 @@ document.querySelector(".openuser").addEventListener("click", function(event) {
 });
 
 function exibirPerfil() {
+    fetch("data.json")
+        .then(res => res.json())
+        .then(usuarios => {
+            const usuario = usuarios.find(usuario => usuario.id == "1")
+
+            document.querySelector(".username2").innerHTML = usuario.nome;
+        })
     console.log('abriu');
     document.querySelector(".modal").style.display = 'block';
     document.querySelector(".userimgcamp").src="simlucas.jpg";
