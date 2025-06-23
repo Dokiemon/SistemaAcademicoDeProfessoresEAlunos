@@ -4,9 +4,18 @@ let isuseropen = false;
 
 function openLogin() {
     fetch("data.json")
+        username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona 
         .then(res => res.json)
-    username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona
-    window.location.href="mainscreen.html";
+        .then(users => {
+            user = user.find(u => u.nome == username);
+
+            if (user) {
+                window.location.href="mainscreen.html";
+            }
+            else {
+                alert("b.")
+            }
+        })
 }
 
 function returnLogin() {
