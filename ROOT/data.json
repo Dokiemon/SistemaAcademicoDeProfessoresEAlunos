@@ -1,12 +1,14 @@
 [
     {
         "id": "0",
-        "nome": ""
+        "nome": "tu",
+        "password": "123"
     },
     {
         "id": "1",
         "nome": "Diabeto Chocolatto",
         "classe": "aluno",
-        "turmas": ["Panificação-2025-02", "Gastronomia-Molecular-2025-02"]
+        "turmas": ["Panificação-2025-02", "Gastronomia-Molecular-2025-02"],
+        "password": "321"
     }
 ]

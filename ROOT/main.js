@@ -1,28 +1,47 @@
+/* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
 let username = "";
 let ismenuopen = false;
 let isuseropen = false;
 
-function openLogin() {
+function openLogin() { //função para abrir a mainscreen
+    let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona
     fetch("data.json")
-        username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona 
-        .then(res => res.json)
+        .then(res => res.json())
         .then(users => {
-            user = user.find(u => u.nome == username);
+            let user = users.find(u => u.nome == username);
 
             if (user) {
-                window.location.href="mainscreen.html";
+                let password = document.querySelector(".password").value;
+                if (user.password == password) {
+                    window.location.href="mainscreen.html";
+                }
+                else {
+                    alert("Usuário ou senha inválida.")
+                }
             }
             else {
-                alert("b.")
+                alert("Usuário ou senha inválida.")
             }
         })
 }
 
-function returnLogin() {
-    window.location.href="index.html";
+function returnLogin() { //retorna pro login quando você cria um novo usuário
+    let username = document.querySelector(".newusername").value;
+    fetch("data.json")
+        .then(res => res.json())
+        .then(users => {
+            if(users.find(u => u.nome == username)) {
+                alert("Nome de usuário já existente.")
+            }
+            else {
+                alert("Usuário criado!") //aqui voce vai implementar o bd aqui para ele add usuários, o html da página é o singin.html
+                window.location.href="index.html";
+            }
+        }
+        )
 }
 
-function openMenu(){
+function openMenu(){ //abre o menu principal que ainda deve estar com o nome do Diabeto pq eu duvido da minha capacidade cognitiva.
     if (ismenuopen == false) {
         ismenuopen = true;
         let menu = document.querySelector('ul');
