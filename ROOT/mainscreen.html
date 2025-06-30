@@ -15,14 +15,18 @@
 
     <button class="material-symbols-outlined" onclick="openMenu()" id="menu">menu</button>
     <ul>
-        <li><button class="openuser">Perfil</button></li>
-        <li><button onclick=''>Turmas</button></li>
-        <li><button>Sobre</button></li>
-        <li><button>Sair</button></li>
+        <li><button onclick="exibirPerfil()">Perfil</button></li>
+        <li><button onclick='closeMenu()'>Turmas</button></li>
+        <li><button onclick='closeMenu()'>Sobre</button></li>
+        <li><button onclick='logOff()'>Sair</button></li>
     </ul>
     <div class="modal">
-        <h1 class="username2"></h1>
+        <h1 class="username2"></h1> <!--nome (João Silva)--> 
         <img class="userimgcamp" src="">
+        <p class= "mail"></p>
+        <p class= "phone"></p>
+        <p class= "nasc"></p>
+        <p class= "username"></p> <!--username (joaozin69)--> 
     </div>
 </body>
 </html>

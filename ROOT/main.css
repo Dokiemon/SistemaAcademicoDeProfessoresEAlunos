@@ -143,6 +143,7 @@ ul:hover {
     display: none;
     position: absolute;
     left: 50%;
+    top: 10%;
     transform: translate(-50%);
     background-color: bisque;
     padding: 5rem;

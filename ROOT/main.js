@@ -1,4 +1,5 @@
 /* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
+/*LINHA 69*/
 let username = "";
 let ismenuopen = false;
 let isuseropen = false;
@@ -8,11 +9,12 @@ function openLogin() { //função para abrir a mainscreen
     fetch("data.json")
         .then(res => res.json())
         .then(users => {
-            let user = users.find(u => u.nome == username);
+            let user = users.find(u => u.username == username);
 
             if (user) {
                 let password = document.querySelector(".password").value;
                 if (user.password == password) {
+                    localStorage.getItem("id", user.id);
                     window.location.href="mainscreen.html";
                 }
                 else {
@@ -30,7 +32,7 @@ function returnLogin() { //retorna pro login quando você cria um novo usuário
     fetch("data.json")
         .then(res => res.json())
         .then(users => {
-            if(users.find(u => u.nome == username)) {
+            if(users.find(u => u.username == username)) {
                 alert("Nome de usuário já existente.")
             }
             else {
@@ -59,18 +61,15 @@ function openMenu(){ //abre o menu principal que ainda deve estar com o nome do 
 
 }
 
-document.querySelector(".openuser").addEventListener("click", function(event) {
-    event.stopPropagation();
-    exibirPerfil();
-});
-
 function exibirPerfil() {
     fetch("data.json")
         .then(res => res.json())
         .then(usuarios => {
-            const usuario = usuarios.find(usuario => usuario.id == "1")
-
+            const usuario = usuarios.find(usuario => usuario.id.value == localStorage.getItem("id"))
             document.querySelector(".username2").innerHTML = usuario.nome;
+            /*document.querySelector(".username2").innerHTML = usuario.nome;
+            document.querySelector(".username2").innerHTML = usuario.nome;
+            document.querySelector(".username2").innerHTML = usuario.nome;*/
         })
     console.log('abriu');
     document.querySelector(".modal").style.display = 'block';
@@ -78,13 +77,18 @@ function exibirPerfil() {
     isuseropen = true;
 }
 
-    window.onclick = function () {
-        if (isuseropen) {
-            document.querySelector(".modal").style.display = "none";
-            isuseropen = false;
-            console.log("fechou")
-        }
+function closeMenu() {
+    if (isuseropen) {
+        document.querySelector(".modal").style.display = "none";
+        isuseropen = false;
+        console.log("fechou")
     }
+}
+
+function logOff() {
+    sessionStorage.clear();
+    window.location.href="index.html";
+}
 
 /*window.onclick = (event) => {
     if (isuseropen) {
