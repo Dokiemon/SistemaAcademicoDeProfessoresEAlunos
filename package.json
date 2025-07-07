@@ -1,8 +1,19 @@
 {
   "devDependencies": {
-    "prisma": "^6.10.1"
+    "prisma": "^6.11.1"
   },
+  "name": "natanimpotentedabizonisciente",
+  "description": "PPO 02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.10.1"
+    "@prisma/client": "^6.11.1"
   }
 }
