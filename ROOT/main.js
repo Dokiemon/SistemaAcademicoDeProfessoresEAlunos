@@ -1,11 +1,11 @@
 /* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
-/*LINHA 69*/
+/*a bosta provavelmente está na LINHA 19*/
 let username = "";
 let ismenuopen = false;
 let isuseropen = false;
 
 function openLogin() { //função para abrir a mainscreen
-    let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona
+    let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona //parou de funcionar
     fetch("data.json")
         .then(res => res.json())
         .then(users => {
@@ -13,9 +13,12 @@ function openLogin() { //função para abrir a mainscreen
 
             if (user) {
                 let password = document.querySelector(".password").value;
+                console.log("senha digitada:" + password)
                 if (user.password == password) {
+                    console.log("senha correta")
                     localStorage.getItem("id", user.id);
-                    window.location.href="mainscreen.html";
+                    //window.location.href="mainscreen.html";
+                    console.log(localStorage.getItem("id"))
                 }
                 else {
                     alert("Usuário ou senha inválida.")
@@ -62,14 +65,15 @@ function openMenu(){ //abre o menu principal que ainda deve estar com o nome do 
 }
 
 function exibirPerfil() {
+    console.log(localStorage.getItem("id"))
     fetch("data.json")
         .then(res => res.json())
         .then(usuarios => {
             const usuario = usuarios.find(usuario => usuario.id.value == localStorage.getItem("id"))
             document.querySelector(".username2").innerHTML = usuario.nome;
-            /*document.querySelector(".username2").innerHTML = usuario.nome;
-            document.querySelector(".username2").innerHTML = usuario.nome;
-            document.querySelector(".username2").innerHTML = usuario.nome;*/
+            document.querySelector(".mail").innerHTML = "Mail: " + usuario.mail;
+            document.querySelector(".phone").innerHTML = "Fone: " + usuario.phone;
+            document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
         })
     console.log('abriu');
     document.querySelector(".modal").style.display = 'block';
@@ -88,6 +92,17 @@ function closeMenu() {
 function logOff() {
     sessionStorage.clear();
     window.location.href="index.html";
+}
+
+function openClasses() {
+    fetch(data.json)
+        .then(res => res.json())
+        .then(turmas_list => {
+            const usuario = usuarios.find(usuario => usuario.id.value == localStorage.getItem("id"))
+            const turmas = usuario.turmas.value;
+            console.log(turmas);
+
+        })
 }
 
 /*window.onclick = (event) => {
