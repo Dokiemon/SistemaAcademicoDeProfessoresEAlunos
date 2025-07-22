@@ -114,6 +114,7 @@ ul button {
     width: 100vh;
     margin-bottom: 5vh;
     margin-top: 5vh;
+    font-weight: bold;
 }
 
 @keyframes menu {
@@ -145,7 +146,26 @@ ul:hover {
     left: 50%;
     top: 10%;
     transform: translate(-50%);
-    background-color: bisque;
+    background-color: rgb(224, 224, 224);
+    padding: 5rem;
+    min-width: 800px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.modal img {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.modalturmas {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+    background-color: rgb(224, 224, 224);
     padding: 5rem;
 }
 

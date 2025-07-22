@@ -1,5 +1,6 @@
 /* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
-/*a bosta provavelmente está na LINHA 19*/
+/*por mais fantastico que pareça o js está funcionando, oq tenho que fazer é refatorar o css*/
+/*refatorar o css = apagar tudo e pegar do chat gpt*/
 let username = "";
 let ismenuopen = false;
 let isuseropen = false;
@@ -13,11 +14,9 @@ function openLogin() { //função para abrir a mainscreen
 
             if (user) {
                 let password = document.querySelector(".password").value;
-                console.log("senha digitada:" + password)
                 if (user.password == password) {
-                    console.log("senha correta")
-                    localStorage.getItem("id", user.id);
-                    //window.location.href="mainscreen.html";
+                    localStorage.setItem("id", user.id);
+                    window.location.href="mainscreen.html";
                     console.log(localStorage.getItem("id"))
                 }
                 else {
@@ -65,11 +64,14 @@ function openMenu(){ //abre o menu principal que ainda deve estar com o nome do 
 }
 
 function exibirPerfil() {
+    closeTurmas();
     console.log(localStorage.getItem("id"))
     fetch("data.json")
         .then(res => res.json())
         .then(usuarios => {
-            const usuario = usuarios.find(usuario => usuario.id.value == localStorage.getItem("id"))
+            const usuario = usuarios.find(usuario => usuario.id == localStorage.getItem("id"))
+            console.log("valor do storage:" + localStorage.getItem("nome"))
+            console.log("variavel:" + usuario.nome)
             document.querySelector(".username2").innerHTML = usuario.nome;
             document.querySelector(".mail").innerHTML = "Mail: " + usuario.mail;
             document.querySelector(".phone").innerHTML = "Fone: " + usuario.phone;
@@ -81,12 +83,21 @@ function exibirPerfil() {
     isuseropen = true;
 }
 
-function closeMenu() {
+function exibirTurmas() {
+    closeMenu();
+    document.querySelector(".modalturmas").style.display = 'block';
+}
+
+function closeMenu() { //acredito que esse if seja desnescessario, mas é melhor não mexer em time que tá ganhando
     if (isuseropen) {
         document.querySelector(".modal").style.display = "none";
         isuseropen = false;
         console.log("fechou")
     }
+    closeTurmas() //isso aqui tambem deve ser apagado em breve, quando eu terminar a aba "sobre"
+}
+function closeTurmas() {
+    document.querySelector(".modalturmas").style.display = "none";
 }
 
 function logOff() {
