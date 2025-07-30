@@ -159,7 +159,7 @@ ul:hover {
     top: 1rem;
 }
 
-.modalturmas {
+.modal-turmas {
     display: none;
     position: absolute;
     left: 50%;
@@ -174,5 +174,6 @@ ul:hover {
     position: relative;
     margin-top: -6vh;
     top: 0px;
-    align-items: center;
+    max-width: 500px;
+    /*align-items: center; me diz o sentido de alinhar os itens que estão dentro do username?????*/
 }

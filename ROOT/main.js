@@ -1,5 +1,5 @@
 /* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
-/*por mais fantastico que pareça o js está funcionando, oq tenho que fazer é refatorar o css*/
+/*por mais fantastico que pareça, o js está funcionando, oq tenho que fazer é refatorar o css*/
 /*refatorar o css = apagar tudo e pegar do chat gpt*/
 let username = "";
 let ismenuopen = false;
@@ -83,11 +83,6 @@ function exibirPerfil() {
     isuseropen = true;
 }
 
-function exibirTurmas() {
-    closeMenu();
-    document.querySelector(".modalturmas").style.display = 'block';
-}
-
 function closeMenu() { //acredito que esse if seja desnescessario, mas é melhor não mexer em time que tá ganhando
     if (isuseropen) {
         document.querySelector(".modal").style.display = "none";
@@ -97,7 +92,7 @@ function closeMenu() { //acredito que esse if seja desnescessario, mas é melhor
     closeTurmas() //isso aqui tambem deve ser apagado em breve, quando eu terminar a aba "sobre"
 }
 function closeTurmas() {
-    document.querySelector(".modalturmas").style.display = "none";
+    document.querySelector(".modal-turmas").style.display = "none";
 }
 
 function logOff() {
@@ -105,14 +100,17 @@ function logOff() {
     window.location.href="index.html";
 }
 
-function openClasses() {
-    fetch(data.json)
+function exibirTurmas() {
+    console.log("Função ta ativando");
+    closeMenu();
+    fetch("data.json")
         .then(res => res.json())
-        .then(turmas_list => {
-            const usuario = usuarios.find(usuario => usuario.id.value == localStorage.getItem("id"))
-            const turmas = usuario.turmas.value;
+        .then(usuarios => {
+            console.log(localStorage.getItem("id"));
+            const usuario = usuarios.find(usuario => usuario.id == localStorage.getItem("id"));
+            const turmas = usuario.turmas; 
             console.log(turmas);
-
+            document.querySelector(".modal-turmas").style.display = "block";
         })
 }
 
