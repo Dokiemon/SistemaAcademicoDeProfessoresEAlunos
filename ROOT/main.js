@@ -9,8 +9,8 @@ function openLogin() { //função para abrir a mainscreen
     let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona //parou de funcionar
     fetch("data.json")
         .then(res => res.json())
-        .then(users => {
-            let user = users.find(u => u.username == username);
+        .then(data => {
+            let user = data.usuarios.find(u => u.username == username);
 
             if (user) {
                 let password = document.querySelector(".password").value;
@@ -33,8 +33,8 @@ function returnLogin() { //retorna pro login quando você cria um novo usuário
     let username = document.querySelector(".newusername").value;
     fetch("data.json")
         .then(res => res.json())
-        .then(users => {
-            if(users.find(u => u.username == username)) {
+        .then(data => {
+            if(data.usuarios.find(u => u.username == username)) {
                 alert("Nome de usuário já existente.")
             }
             else {
@@ -68,8 +68,8 @@ function exibirPerfil() {
     console.log(localStorage.getItem("id"))
     fetch("data.json")
         .then(res => res.json())
-        .then(usuarios => {
-            const usuario = usuarios.find(usuario => usuario.id == localStorage.getItem("id"))
+        .then(data => {
+            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"))
             console.log("valor do storage:" + localStorage.getItem("nome"))
             console.log("variavel:" + usuario.nome)
             document.querySelector(".username2").innerHTML = usuario.nome;
@@ -105,16 +105,18 @@ function exibirTurmas() {
     closeMenu();
     fetch("data.json")
         .then(res => res.json())
-        .then(usuarios => {
+        .then(data => {
             console.log(localStorage.getItem("id"));
-            const usuario = usuarios.find(usuario => usuario.id == localStorage.getItem("id"));
+            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"));
             const turmas = usuario.turmas; 
             console.log(turmas);
             document.querySelector(".modal-turmas").style.display = "block";
             turmas.forEach(turma => {
                 let turmaButton = document.createElement('button');
                 turmaButton.setAttribute('class', 'turma-button');
-                turmaButton.innerHTML = turma;
+                turmaButton.setAttribute('id', turma);
+                let turmaNome = data.turmas.find(t => t.id == turma);
+                turmaButton.innerHTML = turmaNome.nome;
                 document.querySelector(".modal-turmas").appendChild(turmaButton);
             })
         })

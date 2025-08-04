@@ -1,4 +1,4 @@
-[
+{"usuarios": [
     {
         "id": "0",
         "nome": "tu",
@@ -14,7 +14,20 @@
         "nome": "Diabeto Chocolatto",
         "username": "diabetochocolatto",
         "classe": "aluno",
-        "turmas": ["Panificação-2025-02", "Gastronomia-Molecular-2025-02"],
+        "turmas": ["0", "1"],
         "password": "321"
     }
+],
+"turmas": [
+    {
+        "id": "0",
+        "nome": "Gastronomia Molecular 2025-02",
+        "alunos": ["0", "1"]
+    },
+    {
+        "id": "1",
+        "nome": "Engenharia Alimentar 2025-02",
+        "alunos": ["0", "1"]
+    }
 ]
+}
