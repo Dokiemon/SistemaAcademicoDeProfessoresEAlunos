@@ -111,6 +111,12 @@ function exibirTurmas() {
             const turmas = usuario.turmas; 
             console.log(turmas);
             document.querySelector(".modal-turmas").style.display = "block";
+            turmas.forEach(turma => {
+                let turmaButton = document.createElement('button');
+                turmaButton.setAttribute('class', 'turma-button');
+                turmaButton.innerHTML = turma;
+                document.querySelector(".modal-turmas").appendChild(turmaButton);
+            })
         })
 }
 

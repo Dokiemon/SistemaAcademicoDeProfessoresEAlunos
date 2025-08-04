@@ -44,7 +44,7 @@ button {
     font-size:20px;
     margin: 2px;
     border: none;
-    background-color: white;
+    background-color: rgba(0,0,0,0);
     border-radius: 5px;
 }
 
@@ -71,7 +71,6 @@ button {
 }
 
 @keyframes button_transition {
-    from{background-color: white}
     from{color: black}
     to{background-color: Black}
     to{color:white}
@@ -115,6 +114,7 @@ ul button {
     margin-bottom: 5vh;
     margin-top: 5vh;
     font-weight: bold;
+    background-color: white;
 }
 
 @keyframes menu {
