@@ -76,10 +76,10 @@ function exibirPerfil() {
             document.querySelector(".mail").innerHTML = "Mail: " + usuario.mail;
             document.querySelector(".phone").innerHTML = "Fone: " + usuario.phone;
             document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
+            document.querySelector(".userimgcamp").src= usuario.img;
         })
     console.log('abriu');
     document.querySelector(".modal").style.display = 'block';
-    document.querySelector(".userimgcamp").src="simlucas.jpg";
     isuseropen = true;
 }
 

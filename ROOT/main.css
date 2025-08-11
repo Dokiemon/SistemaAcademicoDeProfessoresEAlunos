@@ -6,13 +6,16 @@ html, body, .cont {
 }
 
 body {
+    background-image: url("/ROOT/assets/background.png");
+    background-size: cover;
     font-family: "DM Sans", serif;
     justify-content: center;
+    --modal-cor: rgba(224, 224, 224, 0.4)
 }
 
 .login {
     display:grid;
-    background-color: white;
+    background-color: var(--modal-cor);
     border-radius: 10px;
     padding: 20px;
 }
@@ -33,7 +36,7 @@ body {
 }
 
 .cont input {
-    
+    background-color: transparent;
     font-size:20px;
     border: none;
     border-radius: 5px;
@@ -146,11 +149,17 @@ ul:hover {
     left: 50%;
     top: 10%;
     transform: translate(-50%);
-    background-color: rgb(224, 224, 224);
+    background-color: var(--modal-cor);
     padding: 5rem;
     min-width: 800px;
     font-weight: 600;
     font-size: 20px;
+}
+
+.userimgcamp {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .modal img {
@@ -165,7 +174,7 @@ ul:hover {
     left: 50%;
     top: 10%;
     transform: translate(-50%);
-    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.4);
     padding: 5rem;
 }
 

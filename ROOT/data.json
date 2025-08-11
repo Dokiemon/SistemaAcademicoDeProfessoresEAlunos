@@ -4,10 +4,11 @@
         "nome": "tu",
         "username": "adm",
         "password": "123",
-        "turmas": ["Panificação-2025-02", "Gastronomia-Molecular-2025-02"],
+        "turmas": ["1"],
         "mail": "ifcedu@gmail.com",
         "phone": "47999866996",
-        "nasc": "30-06-2007"
+        "nasc": "30-06-2007",
+        "img": "/ROOT/assets/bruno.png"
     },
     {
         "id": "1",
@@ -15,7 +16,8 @@
         "username": "diabetochocolatto",
         "classe": "aluno",
         "turmas": ["0", "1"],
-        "password": "321"
+        "password": "321",
+        "img": "/ROOT/assets/simlucas.jpg"
     }
 ],
 "turmas": [
