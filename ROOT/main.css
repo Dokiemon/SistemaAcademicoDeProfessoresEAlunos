@@ -10,7 +10,7 @@ body {
     background-size: cover;
     font-family: "DM Sans", serif;
     justify-content: center;
-    --modal-cor: rgba(224, 224, 224, 0.4)
+    --modal-cor: rgba(224, 224, 224, 0.4);
 }
 
 .login {
@@ -117,7 +117,7 @@ ul button {
     margin-bottom: 5vh;
     margin-top: 5vh;
     font-weight: bold;
-    background-color: white;
+    background-color: transparent;
 }
 
 @keyframes menu {

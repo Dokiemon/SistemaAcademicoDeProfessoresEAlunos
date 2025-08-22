@@ -1,23 +1,23 @@
 {"usuarios": [
     {
         "id": "0",
-        "nome": "tu",
+        "nome": "Administração",
         "username": "adm",
         "password": "123",
         "turmas": ["1"],
         "mail": "ifcedu@gmail.com",
         "phone": "47999866996",
         "nasc": "30-06-2007",
-        "img": "/ROOT/assets/bruno.png"
+        "img": "/ROOT/assets/nopicture.jpg"
     },
     {
         "id": "1",
-        "nome": "Diabeto Chocolatto",
-        "username": "diabetochocolatto",
+        "nome": "Jacinto Machado",
+        "username": "jacinto_machado",
         "classe": "aluno",
         "turmas": ["0", "1"],
         "password": "321",
-        "img": "/ROOT/assets/simlucas.jpg"
+        "img": "/ROOT/assets/nopicture.jpg"
     }
 ],
 "turmas": [
