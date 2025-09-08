@@ -92,7 +92,10 @@ function closeMenu() { //acredito que esse if seja desnescessario, mas é melhor
     closeTurmas() //isso aqui tambem deve ser apagado em breve, quando eu terminar a aba "sobre"
 }
 function closeTurmas() {
-    document.querySelector(".modal-turmas").style.display = "none";
+    console.log("oi")
+    const modal = document.querySelector(".modal-turmas");
+    modal.style.display = "none";
+    modal.innerHTML = "";
 }
 
 function logOff() {
