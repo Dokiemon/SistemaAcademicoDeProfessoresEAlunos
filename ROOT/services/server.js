@@ -9,6 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", async(req,res)=>{
+  res.send("zaza");
+})
+
 app.post('/api/cadastro', async (req, res) => {
   try {
     const { username, password } = req.body;
