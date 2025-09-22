@@ -1,9 +1,9 @@
-let userName = document.querySelector(".username");
+let username = document.querySelector(".username");
 let password = document.querySelector(".password");
 
 const exeCadastro = async () => {
   try {
-    const valueUser = userName.value.trim();
+    const valueUser = username.value.trim();
     const valuePassword = password.value;
 
     if (!valueUser || !valuePassword) {
@@ -11,10 +11,10 @@ const exeCadastro = async () => {
       return;
     }
 
-    const response = await fetch('/ROOT/services/server.js', {
+    const response = await fetch('/cadastro', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userName: valueUser, password: valuePassword })
+      body: JSON.stringify({ username: valueUser, password: valuePassword })
     });
 
     if (response.ok) {
@@ -26,12 +26,12 @@ const exeCadastro = async () => {
     }
   } catch (err) {
     console.error(err);
-    alert('Erro de rede ou inesperado');
+    alert(`Erro:${err.message}`);
   }
 };
 
 // exemplo: conectar ao submit do form (se houver)
-document.querySelector('#cadastroForm')?.addEventListener('submit', e => {
-  e.preventDefault();
+// document.querySelector('#cadastroForm')?.addEventListener('submit', e => {
+//   e.preventDefault();
   exeCadastro();
-});
+// });

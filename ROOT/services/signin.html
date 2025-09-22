@@ -8,16 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <script src="main.js" defer></script>
+    <script src="/ROOT/services/cadastro.js"  defer></script>
 </head>
 <body>
     <div class="cont">
-        <div class="login">
+        <form method="post" action="/cadastro">
             <p class="ovo">Cadastro</p>
-            <input placeholder="Nome de usuário" class="newusername">
-            <input placeholder="Senha" class="newpassword">
-            <button onclick="returnLogin()" type="button">Cadastrar</button>
-        </div>
+            <input placeholder="Nome de usuário" class="username" name="username">
+            <input placeholder="Senha" class="password" name="password">
+            <button onclick="exeCadastro()" type="button">Cadastrar</button>
+        </form>
     </div>
 </body>
 </html>

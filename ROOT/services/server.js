@@ -2,24 +2,40 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const { PrismaClient } = require('@prisma/client');
+const path = require("path");
 
 const prisma = new PrismaClient();
 const app = express();
 
 app.use(cors());
+// Agora aceita JSON **e** formulários
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async(req,res)=>{
-  res.send("zaza");
-})
+const PORT = process.env.PORT || 3000;
 
-app.post('/api/cadastro', async (req, res) => {
+// Servir arquivos estáticos da pasta services
+app.use(express.static(path.join(__dirname, "services")));
+
+// Rota principal -> abre o formulário
+app.get("/", async (req, res) => {
+  res.sendFile(path.join(__dirname, "services", "signin.html"));
+});
+
+// Rota para cadastro
+app.post('/cadastro', async (req, res) => {
   try {
     const { username, password } = req.body;
-    if (!username || !password) return res.status(400).json({ error: 'Campos vazios' });
+    console.log('POST /cadastro body:', req.body);
+
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Campos vazios' });
+    }
 
     const existing = await prisma.usuario.findUnique({ where: { username } });
-    if (existing) return res.status(409).json({ error: 'Usuário já existe' });
+    if (existing) {
+      return res.status(409).json({ error: 'Usuário já existe' });
+    }
 
     const hashed = await bcrypt.hash(password, 10);
     const user = await prisma.usuario.create({
@@ -33,5 +49,4 @@ app.post('/api/cadastro', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server rodando na porta ${PORT}`));
