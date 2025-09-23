@@ -18,12 +18,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "services")));
 
 // Rota principal -> abre o formulário
-app.get("/", async (req, res) => {
-  res.sendFile(path.join(__dirname, "services", "signin.html"));
-});
+//app.get("/", async (req, res) => {
+  //res.sendFile(path.join(__dirname, "services", "signin.html"));
+//});
 
 // Rota para cadastro
-app.post('/cadastro', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const { username, password } = req.body;
     console.log('POST /cadastro body:', req.body);
