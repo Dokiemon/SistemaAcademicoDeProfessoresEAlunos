@@ -109,28 +109,21 @@ function logOff() {
 }
 
 function exibirTurmas() {
-    console.log("Função ta ativando");
     closeMenu();
-    fetch("/ROOT/services/data.json")
-        .then(res => res.json())
-        .then(data => {
-            console.log(localStorage.getItem("id"));
-            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"));
-            const turmas = usuario.turmas; 
-            console.log(turmas);
-            document.querySelector(".modal-turmas").style.display = "block";
-            turmas.forEach(turma => {
-                let turmaButton = document.createElement('button');
-                turmaButton.setAttribute('class', 'turma-button');
-                turmaButton.setAttribute('id', turma);
-                let turmaNome = data.turmas.find(t => t.id == turma);
-                turmaButton.innerHTML = turmaNome.nome;
-                    turmaButton.onclick = function() {
-                        exibirDetalheTurma(turmaNome.nome);
-                    };
-                    document.querySelector(".modal-turmas").appendChild(turmaButton);
-            })
-        })
+    //Modelo que insere botões de turma abaixo: Cáclculo 1, fisica, webdesign, literatura:
+    const modal = document.querySelector(".modal-turmas");
+    modal.style.display = "block";
+    const turmas = ["Cálculo 1", "Física", "Web Design", "Literatura"];
+    modal.innerHTML = "<h2>Turmas</h2>"; // Limpa o conteúdo anterior e adiciona um título
+
+    turmas.forEach(turma => {
+        const turmaButton = document.createElement("button");
+        turmaButton.textContent = turma;
+        turmaButton.className = "turma-button";
+        turmaButton.onclick = () => exibirDetalheTurma(turma);
+        modal.appendChild(turmaButton);
+    });
+    
 function exibirDetalheTurma(nomeTurma) {
     const modal = document.querySelector('.modal-turma-detalhe');
     modal.style.display = 'block';
