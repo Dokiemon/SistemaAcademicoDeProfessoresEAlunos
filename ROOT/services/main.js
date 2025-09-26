@@ -1,132 +1,30 @@
-/* Bom dia, boa tarde ou boa noite, o codigo mais espaguete q vc vai ver, se estiver procurando onde implementar o banco de dados, pesquise por returnLogin*/
-/*por mais fantastico que pareça, o js está funcionando, oq tenho que fazer é refatorar o css*/
-/*refatorar o css = apagar tudo e pegar do chat gpt*/
-let username = "";
-let ismenuopen = false;
-let isuseropen = false;
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".Login-Button");
 
-function openLogin() { //função para abrir a mainscreen
-    let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona //parou de funcionar
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            let user = data.usuarios.find(u => u.username == username);
+    loginButton.addEventListener("click", () => {
+        const username = document.querySelector(".username").value;
+        const password = document.querySelector(".password").value;
 
-            if (user) {
-                let password = document.querySelector(".password").value;
-                if (user.password == password) {
-                    localStorage.setItem("id", user.id);
-                    window.location.href="mainscreen.html";
-                    console.log(localStorage.getItem("id"))
-                }
-                else {
-                    alert("Usuário ou senha inválida.")
-                }
-            }
-            else {
-                alert("Usuário ou senha inválida.")
-            }
-        })
-}
-
-function returnLogin() { //retorna pro login quando você cria um novo usuário
-    let username = document.querySelector(".newusername").value;
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            if(data.usuarios.find(u => u.username == username)) {
-                alert("Nome de usuário já existente.")
-            }
-            else {
-                alert("Usuário criado!") //aqui voce vai implementar o bd aqui para ele add usuários, o html da página é o singin.html
-                window.location.href="index.html";
-            }
+        if (!username || !password) {
+            alert("Preencha todos os campos!");
+            return;
         }
-        )
-}
 
-function openMenu(){ //abre o menu principal que ainda deve estar com o nome do Diabeto pq eu duvido da minha capacidade cognitiva.
-    if (ismenuopen == false) {
-        ismenuopen = true;
-        let menu = document.querySelector('ul');
-        menu.style.display = 'block';
-        let button = document.querySelector('.material-symbols-outlined');
-        button.style.marginLeft = '20vh';
-    }
-    else if (ismenuopen == true) {
-        ismenuopen = false;
-        let menu = document.querySelector('ul');
-        menu.style.display = 'none';
-        let button = document.querySelector('.material-symbols-outlined');
-        button.style.marginLeft = '0vh';
-    }
+        // Busca o usuário no localStorage
+        const storedUser = localStorage.getItem(username);
 
-}
+        if (!storedUser) {
+            alert("Usuário não encontrado.");
+            return;
+        }
 
-function exibirPerfil() {
-    closeTurmas();
-    console.log(localStorage.getItem("id"))
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"))
-            console.log("valor do storage:" + localStorage.getItem("nome"))
-            console.log("variavel:" + usuario.nome)
-            document.querySelector(".username2").innerHTML = usuario.nome;
-            document.querySelector(".mail").innerHTML = "Mail: " + usuario.mail;
-            document.querySelector(".phone").innerHTML = "Fone: " + usuario.phone;
-            document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
-            document.querySelector(".userimgcamp").src= usuario.img;
-        })
-    console.log('abriu');
-    document.querySelector(".modal").style.display = 'block';
-    isuseropen = true;
-}
+        const userData = JSON.parse(storedUser);
 
-function closeMenu() { //acredito que esse if seja desnescessario, mas é melhor não mexer em time que tá ganhando
-    if (isuseropen) {
-        document.querySelector(".modal").style.display = "none";
-        isuseropen = false;
-        console.log("fechou")
-    }
-    closeTurmas() //isso aqui tambem deve ser apagado em breve, quando eu terminar a aba "sobre"
-}
-function closeTurmas() {
-    console.log("oi")
-    const modal = document.querySelector(".modal-turmas");
-    modal.style.display = "none";
-    modal.innerHTML = "";
-}
-
-function logOff() {
-    sessionStorage.clear();
-    window.location.href="index.html";
-}
-
-function exibirTurmas() {
-    console.log("Função ta ativando");
-    closeMenu();
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            console.log(localStorage.getItem("id"));
-            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"));
-            const turmas = usuario.turmas; 
-            console.log(turmas);
-            document.querySelector(".modal-turmas").style.display = "block";
-            turmas.forEach(turma => {
-                let turmaButton = document.createElement('button');
-                turmaButton.setAttribute('class', 'turma-button');
-                turmaButton.setAttribute('id', turma);
-                let turmaNome = data.turmas.find(t => t.id == turma);
-                turmaButton.innerHTML = turmaNome.nome;
-                document.querySelector(".modal-turmas").appendChild(turmaButton);
-            })
-        })
-}
-
-/*window.onclick = (event) => {
-    if (isuseropen) {
-        document.querySelector(".modal").style.display = 'none';
-    }
-}*/
+        if (userData.password === password) {
+            alert("Login realizado com sucesso!");
+            window.location.href = "mainscreen.html";
+        } else {
+            alert("Senha incorreta.");
+        }
+    });
+});
