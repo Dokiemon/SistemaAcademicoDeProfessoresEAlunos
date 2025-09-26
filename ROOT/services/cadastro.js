@@ -1,37 +1,31 @@
-// let username = document.querySelector(".username");
-// let password = document.querySelector(".password");
+function exeCadastro() {
+    const username = document.querySelector('.newusername').value;
+    const password = document.querySelector('.newpassword').value;
+    const mail = document.querySelector('.newmail').value;
+    const phone = document.querySelector('.newphone').value;
+    const nome = document.querySelector('.newpname').value;
 
-// const exeCadastro = async () => {
-//   try {
-//     const valueUser = username.value.trim();
-//     const valuePassword = password.value;
+    if (!username || !password || !mail || !phone || !nome) {
+        alert("Preencha todos os campos!");
+        return;
+    }
 
-//     if (!valueUser || !valuePassword) {
-//       alert('Preencha todos os campos');
-//       return;
-//     }
+    // Verifica se usuário já existe
+    const existingUser = localStorage.getItem(username);
+    if (existingUser) {
+        alert("Usuário já cadastrado!");
+        return;
+    }
 
-//     const response = await fetch('/cadastro', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ username: valueUser, password: valuePassword })
-//     });
-
-//     if (response.ok) {
-//       alert('Cadastro realizado com sucesso');
-//       // opcional: redirecionar ou limpar formulário
-//     } else {
-//       const err = await response.json().catch(() => ({ error: 'Erro' }));
-//       alert('Erro: ' + (err.error || 'Problema no cadastro'));
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     alert(`Erro:${err.message}`);
-//   }
-// };
-
-// // exemplo: conectar ao submit do form (se houver)
-// // document.querySelector('#cadastroForm')?.addEventListener('submit', e => {
-// //   e.preventDefault();
-//   exeCadastro();
-// // });
+    // Salva usuário com todos os campos
+    localStorage.setItem(username, JSON.stringify({
+        username,
+        password,
+        mail,
+        phone,
+        nome,
+        img: "/ROOT/assets/nopicture.jpg"
+    }));
+    alert("Cadastro realizado com sucesso!");
+    window.location.href = "index.html";
+}

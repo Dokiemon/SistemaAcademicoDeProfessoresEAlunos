@@ -4,46 +4,45 @@
 let username = "";
 let ismenuopen = false;
 let isuseropen = false;
+const loginButton = document.querySelector(".Login-Button");
 
-function openLogin() { //função para abrir a mainscreen
-    let username = document.querySelector(".username").value //sim, muito bonito este codigo, pena que não funciona //eu sou pica e agr ele funciona //parou de funcionar
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            let user = data.usuarios.find(u => u.username == username);
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".Login-Button");
 
-            if (user) {
-                let password = document.querySelector(".password").value;
-                if (user.password == password) {
-                    localStorage.setItem("id", user.id);
-                    window.location.href="mainscreen.html";
-                    console.log(localStorage.getItem("id"))
-                }
-                else {
-                    alert("Usuário ou senha inválida.")
-                }
-            }
-            else {
-                alert("Usuário ou senha inválida.")
-            }
-        })
-}
+    loginButton.addEventListener("click", () => {
+        const username = document.querySelector(".username").value;
+        const password = document.querySelector(".password").value;
 
-function returnLogin() { //retorna pro login quando você cria um novo usuário
-    let username = document.querySelector(".newusername").value;
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            if(data.usuarios.find(u => u.username == username)) {
-                alert("Nome de usuário já existente.")
-            }
-            else {
-                alert("Usuário criado!") //aqui voce vai implementar o bd aqui para ele add usuários, o html da página é o singin.html
-                window.location.href="index.html";
-            }
+        if (!username || !password) {
+            alert("Preencha todos os campos!");
+            return;
         }
-        )
-}
+
+        // Busca o usuário no localStorage
+        const storedUser = localStorage.getItem(username);
+
+        if (!storedUser) {
+            alert("Usuário não encontrado.");
+            return;
+        }
+
+        const userData = JSON.parse(storedUser);
+
+        if (userData.password === password) {
+            // Salva o usuário logado completo
+            localStorage.setItem("usuarioLogado", JSON.stringify({
+                username: username,
+                ...userData
+            }));
+            alert("Login realizado com sucesso!");
+            window.location.href = "mainscreen.html";
+        } else {
+            alert("Senha incorreta.");
+        }
+    });
+});
+
+
 
 function openMenu(){ //abre o menu principal que ainda deve estar com o nome do Diabeto pq eu duvido da minha capacidade cognitiva.
     let menu = document.querySelector('ul');
@@ -59,20 +58,32 @@ function openMenu(){ //abre o menu principal que ainda deve estar com o nome do 
 
 function exibirPerfil() {
     closeTurmas();
-    console.log(localStorage.getItem("id"))
-    fetch("data.json")
-        .then(res => res.json())
-        .then(data => {
-            const usuario = data.usuarios.find(usuario => usuario.id == localStorage.getItem("id"))
-            console.log("valor do storage:" + localStorage.getItem("nome"))
-            console.log("variavel:" + usuario.nome)
-            document.querySelector(".username2").innerHTML = usuario.nome;
-            document.querySelector(".mail").innerHTML = "Mail: " + usuario.mail;
-            document.querySelector(".phone").innerHTML = "Fone: " + usuario.phone;
-            document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
-            document.querySelector(".userimgcamp").src= usuario.img;
-        })
-    console.log('abriu');
+    let usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+    if (usuario) {
+        document.querySelector(".username2").innerHTML = usuario.nome || usuario.username;
+        document.querySelector(".mail").innerHTML = "Mail: " + (usuario.mail || "");
+        document.querySelector(".phone").innerHTML = "Fone: " + (usuario.phone || "");
+        document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
+        document.querySelector(".userimgcamp").src = usuario.img || "/ROOT/assets/nopicture.jpg";
+    } else {
+        // Se não achou no localStorage, tenta buscar do data.json
+        let id = localStorage.getItem("id");
+        fetch("/ROOT/services/data.json")
+            .then(res => res.json())
+            .then(data => {
+                usuario = data.usuarios.find(u => u.id == id);
+                if (usuario) {
+                    document.querySelector(".username2").innerHTML = usuario.nome || usuario.username;
+                    document.querySelector(".mail").innerHTML = "Mail: " + (usuario.mail || "");
+                    document.querySelector(".phone").innerHTML = "Fone: " + (usuario.phone || "");
+                    document.querySelector(".username").innerHTML = "Usuário: " + usuario.username;
+                    document.querySelector(".userimgcamp").src = usuario.img || "/ROOT/assets/nopicture.jpg";
+                } else {
+                    alert("Usuário não encontrado!");
+                }
+            });
+    }
     document.querySelector(".modal").style.display = 'block';
     isuseropen = true;
 }
@@ -100,7 +111,7 @@ function logOff() {
 function exibirTurmas() {
     console.log("Função ta ativando");
     closeMenu();
-    fetch("data.json")
+    fetch("/ROOT/services/data.json")
         .then(res => res.json())
         .then(data => {
             console.log(localStorage.getItem("id"));
