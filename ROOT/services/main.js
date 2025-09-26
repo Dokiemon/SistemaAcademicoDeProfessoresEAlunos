@@ -46,19 +46,13 @@ function returnLogin() { //retorna pro login quando você cria um novo usuário
 }
 
 function openMenu(){ //abre o menu principal que ainda deve estar com o nome do Diabeto pq eu duvido da minha capacidade cognitiva.
-    if (ismenuopen == false) {
+    let menu = document.querySelector('ul');
+    if (!ismenuopen) {
         ismenuopen = true;
-        let menu = document.querySelector('ul');
-        menu.style.display = 'block';
-        let button = document.querySelector('.material-symbols-outlined');
-        button.style.marginLeft = '20vh';
-    }
-    else if (ismenuopen == true) {
+        menu.classList.add('menu-aberto');
+    } else {
         ismenuopen = false;
-        let menu = document.querySelector('ul');
-        menu.style.display = 'none';
-        let button = document.querySelector('.material-symbols-outlined');
-        button.style.marginLeft = '0vh';
+        menu.classList.remove('menu-aberto');
     }
 
 }
@@ -120,9 +114,24 @@ function exibirTurmas() {
                 turmaButton.setAttribute('id', turma);
                 let turmaNome = data.turmas.find(t => t.id == turma);
                 turmaButton.innerHTML = turmaNome.nome;
-                document.querySelector(".modal-turmas").appendChild(turmaButton);
+                    turmaButton.onclick = function() {
+                        exibirDetalheTurma(turmaNome.nome);
+                    };
+                    document.querySelector(".modal-turmas").appendChild(turmaButton);
             })
         })
+function exibirDetalheTurma(nomeTurma) {
+    const modal = document.querySelector('.modal-turma-detalhe');
+    modal.style.display = 'block';
+    document.querySelector('.turma-nome').textContent = nomeTurma;
+    // Participantes já estão fixos no HTML, apenas exibe o modal e o nome da turma
+    document.querySelector('.ver-notas').onclick = function() {
+        alert('Funcionalidade de notas em desenvolvimento!');
+    };
+    document.querySelector('.fechar-turma').onclick = function() {
+        modal.style.display = 'none';
+    };
+}
 }
 
 /*window.onclick = (event) => {

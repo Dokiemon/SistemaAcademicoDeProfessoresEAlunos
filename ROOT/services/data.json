@@ -18,6 +18,54 @@
         "turmas": ["0", "1"],
         "password": "321",
         "img": "/ROOT/assets/nopicture.jpg"
+    },
+    {
+        "id": "2",
+        "nome": "Maria Eduarda",
+        "username": "maria",
+        "classe": "aluno",
+        "turmas": ["0"],
+        "password": "1234",
+        "mail": "maria@email.com",
+        "phone": "111111111",
+        "nasc": "01-01-2000",
+        "img": "/ROOT/assets/nopicture.jpg"
+    },
+    {
+        "id": "3",
+        "nome": "Lucas Silva",
+        "username": "lucas",
+        "classe": "aluno",
+        "turmas": ["0"],
+        "password": "1234",
+        "mail": "lucas@email.com",
+        "phone": "222222222",
+        "nasc": "02-02-2000",
+        "img": "/ROOT/assets/nopicture.jpg"
+    },
+    {
+        "id": "4",
+        "nome": "Ana Paula",
+        "username": "ana",
+        "classe": "aluno",
+        "turmas": ["0"],
+        "password": "1234",
+        "mail": "ana@email.com",
+        "phone": "333333333",
+        "nasc": "03-03-2000",
+        "img": "/ROOT/assets/nopicture.jpg"
+    },
+    {
+        "id": "5",
+        "nome": "João Pedro",
+        "username": "joao",
+        "classe": "aluno",
+        "turmas": ["0"],
+        "password": "1234",
+        "mail": "joao@email.com",
+        "phone": "444444444",
+        "nasc": "04-04-2000",
+        "img": "/ROOT/assets/nopicture.jpg"
     }
 ],
 "turmas": [
