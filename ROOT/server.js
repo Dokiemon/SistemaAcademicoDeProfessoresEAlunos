@@ -11,8 +11,17 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', (req, res) => {
-    res.send(__dirname + "/public/index.html")
+    res.sendFile(__dirname + "/public/index.html")
 })
+
+app.get('/register', (req, res) => {
+    res.sendFile(__dirname + "/public/register.html")
+})
+
+// app.post('/register', (req, res) => {
+//     // Lógica para processar o cadastro do usuário
+//     res.send('Cadastro realizado com sucesso!'); 
+// });
 
 if (process.env.NODE_ENV !== 'test' || process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
