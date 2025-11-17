@@ -32,18 +32,23 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const verifyLogin = CadastroUser.findOne({ 
+    CadastroUser.findOne({ 
         username: req.body.username,
         password: req.body.password
     })
     .then(user => {
         if (user) {
-            res.send({ success: true, message: "Login bem-sucedido." });
-            res.redirect('/mainscreen');
+            // Redirect without sending an extra response
+            return res.redirect('/mainscreen');
         } 
         else {
-            res.status(401).send({ success: false, message: "Usuário ou senha incorretos." });
+            return res.status(401).send({ success: false, message: "Usuário ou senha incorretos." });
         }
+    })
+    .catch(error => {
+        console.error("Erro na autenticação:", error);
+        res.status(500).send({ success: false, message: "Erro interno." });
+    });
 });
 
 app.get('/register', (req, res) => {
@@ -52,21 +57,16 @@ app.get('/register', (req, res) => {
 
 app.post('/register', (req, res) => {
     const newUser = new CadastroUser({
-        username: req.body.newusername,
-        password: req.body.newpassword,
-        email: req.body.newmail,
-        phone: req.body.newphone,
-        name: req.body.newname,
+        username: req.username,
+        password: req.body.password,
+        email: req.body.email,
+        phone: req.body.phone,
+        name: req.body.name,
     });
     newUser.save()
         .then(() => res.send('Cadastro realizado com sucesso!'))
         .catch(err => res.status(400).send('Erro ao cadastrar usuário: ' + err));
 });
-
-app.get('/mainscreen', (req, res) => {
-    res.sendFile(__dirname + "/public/mainscreen.html")
-})
-
 if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log("Servidor rodando na porta: " + PORT);

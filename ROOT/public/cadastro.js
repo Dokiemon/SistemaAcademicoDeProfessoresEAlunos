@@ -30,6 +30,7 @@ function exeCadastro() {
     .then(res => res.json())
     .catch(err => { 
         alert("Erro ao enviar usuário: " + err);
+        console.log(usernome.value, senha.value, email.value, telefone.value, nome.value);
         return;
     });
 }
