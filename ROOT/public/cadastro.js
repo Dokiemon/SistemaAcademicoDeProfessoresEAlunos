@@ -14,20 +14,22 @@ function exeCadastro() {
         return;
     }
 
-    // const response = await fetch('/register', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         username: usernome,
-    //         password: senha,
-    //         mail: email,
-    //         phone: telefone,
-    //         name: nome
-    //     })
-    // })
-    // const result = await response.json();
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = "index.html";
+    const response = fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: usernome,
+            password: senha,
+            mail: email,
+            phone: telefone,
+            name: nome
+        })
+    })
+    .then(res => res.json())
+    .catch(err => { 
+        alert("Erro ao enviar usuário: " + err);
+        return;
+    });
 }
