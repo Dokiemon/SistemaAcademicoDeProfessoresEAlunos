@@ -14,23 +14,23 @@ function exeCadastro() {
         return;
     }
 
-    const response = fetch('/register', {
+    fetch('/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username: usernome,
-            password: senha,
-            mail: email,
-            phone: telefone,
-            name: nome
+            username: usernome.value,
+            password: senha.value,
+            email: email.value,
+            phone: telefone.value,
+            name: nome.value
         })
     })
-    .then(res => res.json())
-    .catch(err => { 
-        alert("Erro ao enviar usuário: " + err);
-        console.log(usernome.value, senha.value, email.value, telefone.value, nome.value);
-        return;
-    });
+    .then(res => res.text())
+    .then(text => {
+        alert(text)
+        window.location.href = '/';
+    })
+    .catch(err => console.error(err));
 }

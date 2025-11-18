@@ -27,18 +27,26 @@ const connectDB = async () => {
 
 connectDB();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/index.html")
 })
 
 app.post('/', (req, res) => {
+    console.log("Requisição de login recebida:", req.body);
+    const username = req.body.username;
+    const password = req.body.password;
+
     CadastroUser.findOne({ 
-        username: req.body.username,
-        password: req.body.password
+        username: username, 
+        password: password 
     })
     .then(user => {
         if (user) {
             // Redirect without sending an extra response
+            console.log("Autenticação bem-sucedida para o usuário:", user.username);
             return res.redirect('/mainscreen');
         } 
         else {
@@ -57,16 +65,28 @@ app.get('/register', (req, res) => {
 
 app.post('/register', (req, res) => {
     const newUser = new CadastroUser({
-        username: req.username,
+        username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         phone: req.body.phone,
         name: req.body.name,
     });
+
     newUser.save()
-        .then(() => res.send('Cadastro realizado com sucesso!'))
-        .catch(err => res.status(400).send('Erro ao cadastrar usuário: ' + err));
+        .then(() => {
+            console.log("Cadastro realizado com sucesso!");
+            res.send("Cadastro realizado com sucesso!");
+        })
+        .catch(error => {
+            console.error("Erro ao salvar usuário:", error);
+            res.status(500).send("Erro ao cadastrar usuário");
+        });
 });
+
+app.get('/mainscreen', (req, res) => {
+    res.sendFile(__dirname + "/public/mainscreen.html")
+});
+
 if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log("Servidor rodando na porta: " + PORT);
