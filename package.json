@@ -1,0 +1,29 @@
+{
+  "name": "sapa",
+  "version": "1.0.0",
+  "description": "sistema academico de professores e alunos",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ROOT && node server.js",
+    "dev": "cd ROOT && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dokiemon/SistemaAcademicoDeProfessoresEAluno.git"
+  },
+  "author": "Gabriel Aguiar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dokiemon/SistemaAcademicoDeProfessoresEAluno/issues"
+  },
+  "homepage": "https://github.com/Dokiemon/SistemaAcademicoDeProfessoresEAluno#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.20.0",
+    "nodemon": "^3.1.10",
+    "save-dev": "^0.0.1-security"
+  }
+}

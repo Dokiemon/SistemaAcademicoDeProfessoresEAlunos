@@ -1,0 +1,272 @@
+.modal-turma-detalhe .lista-participantes {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.modal-turma-detalhe .lista-participantes > div {
+    margin: 6px 0;
+}
+.modal-turma-detalhe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.modal-turma-detalhe .botoes-turma {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+.modal-turma-detalhe .lista-participantes {
+    margin-top: 10px;
+    text-align: center;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.modal-turma-detalhe .turma-participantes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modal-turma-detalhe ul {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+}
+.modal-turma-detalhe li {
+    margin: 6px 0;
+}
+html, body, .cont {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/assets/background.png");
+    background-size: cover;
+    font-family: "DM Sans", serif;
+    justify-content: center;
+    --modal-cor: rgba(100, 108, 216, 0.4);
+    --border-line: rgb(12, 58, 128)
+}
+
+.login {
+    display:grid;
+    background-color: var(--modal-cor);
+    border-radius: 30px;
+    padding: 20px;
+    border: 3px solid var(--border-line);
+    backdrop-filter: blur(3px);
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    /* min-height: 120vh; */
+}
+
+.ovo {
+    font-size: 80px;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    margin: 10px;
+}
+
+.cont input {
+    background-color: transparent;
+    font-size:20px;
+    border: none;
+    border-radius: 5px;
+    outline: 0px;
+}
+
+button {
+    font-size:20px;
+    margin: 2px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ronaldo {
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: none;
+    color: black;
+}
+
+/* .ronaldo:hover {
+    color: rgb(12, 159, 179)
+} */
+
+/* @keyframes ugabuga {
+    from{box-shadow: 0px 0px 55px 10px rgba(0,0,0,0)}
+    to{box-shadow: 0px 0px 45px 5px rgba(30,30,30,1)}
+}
+
+.login:hover {
+    animation-name: ugabuga;
+    animation-duration: 0.5s;
+    box-shadow: 0px 0px 45px 5px rgba(30,30,30,1);
+}
+
+@keyframes button_transition {
+    from{color: black}
+    to{background-color: Black}
+    to{color:white}
+}
+
+button:hover {
+    animation-name: button_transition;
+    animation-duration: 0.5s;
+    background-color: black;
+    color: white;
+} */
+
+/* @keyframes input_transition {
+    0%{} /*TERMINAR AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+}
+
+.cont input:hover {
+    animation-name: input_transition;
+    animation-duration: 0.5s;
+}*/
+
+ul {
+    position: fixed;
+    list-style-type: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    max-width: 20vh;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.77,0,0.175,1);
+    z-index: 1000;
+    background: var(--modal-cor);
+    box-shadow: 10px 0 30px -10px rgba(0,0,0,0.6);
+    display: block;
+    border-right: 2px solid var(--border-line);
+    backdrop-filter: blur(3px);
+}
+
+li {
+    justify-content: center;
+    display: flex;
+}
+
+ul button {
+    width: 100vh;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+ul.menu-aberto {
+    transform: translateX(0);
+}
+
+/* @keyframes menu {
+    from{box-shadow: 0px 0px 55px 10px rgba(0,0,0,0)}
+    to{box-shadow: 25px 0px 45px -10px rgba(30,30,30,1)}
+}
+
+ul:hover {
+    animation-name: menu;
+    animation-duration: 0.5s;
+    box-shadow: 25px 0px 45px -10px rgba(30,30,30,1);
+} */
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    background: var(--modal-cor);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+    background-color: var(--modal-cor);
+    padding: 5rem;
+    min-width: 800px;
+    min-height: 200px;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 30px;
+    border: 3px solid var(--border-line);
+    backdrop-filter: blur(3px);
+}
+
+.userimgcamp {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid var(--border-line);
+}
+
+.modal img {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.modal-turmas {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+    background-color: var(--modal-cor);
+    padding: 5rem;
+    border-radius: 30px;
+    border: 3px solid var(--border-line);
+    backdrop-filter: blur(3px);
+}
+
+.username2 {
+    font-size: 4em;
+    position: relative;
+    margin-top: -6vh;
+    top: 0px;
+    max-width: 500px;
+    /*align-items: center; me diz o sentido de alinhar os itens que estão dentro do username?????*/
+}
